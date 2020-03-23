@@ -6,4 +6,4 @@ W A S D - Movement(walk)
 SpaceBar - Attack
 Shift + A/D - To run
 
-Project for EMC113 FINALS
+Project for EMC131P FINALS
