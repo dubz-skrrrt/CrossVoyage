@@ -4,7 +4,7 @@ class deathScene extends Phaser.Scene{
     }
 
     create(){
-
+        timer = 30;
         if (stage == 1){
             bg = this.add.image(this.game.renderer.width/2 ,this.game.renderer.height*.5, 'bg').setScale(1).setDepth(-2);
         } else if (stage == 2){
@@ -41,7 +41,6 @@ class deathScene extends Phaser.Scene{
                 timer -= 0.3;
                 text_lives.setText('Lives x'+Lives);
             }else{
-                timer = 30;
                 if (stage == 1){ 
                     this.scene.start('grassLevel');
                 }else if (stage == 2){
@@ -55,9 +54,9 @@ class deathScene extends Phaser.Scene{
             
             
         }else{
-            timer = 30;
             if (timer > 0){
                 timer -= 0.3;
+                console.log(timer);
             }else{
                 this.scene.start('menu');
             }

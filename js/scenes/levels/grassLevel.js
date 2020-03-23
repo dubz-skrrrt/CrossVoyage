@@ -25,6 +25,7 @@ class Level1 extends Phaser.Scene{
         groundLayer = map.createStaticLayer('World', tileset, 0, 0);
         groundLayer.setCollisionByProperty({ collider: true });
         waterLayer = map.createDynamicLayer('Water', tileset, 0, 0);
+        waterLayer.setCollisionByExclusion([-1]);
         invisbleLayer = map.createStaticLayer('invisbleColliders', tileset, 0, 0);
         invisbleLayer.setCollisionByExclusion([-1]);
         var objectset = map.addTilesetImage("objects");
@@ -63,7 +64,8 @@ class Level1 extends Phaser.Scene{
         this.physics.add.collider(groundLayer, reaper);
         this.physics.add.collider(reaper, movingCrate, movingBlock, null, this);
         this.physics.add.collider(reaper, clearLayer, nextStage, null, this);
-       
+        this.physics.add.collider(reaper, waterLayer, OutofBounds, null, this);
+
         this.physics.world.bounds.width = groundLayer.width;
         this.physics.world.bounds.height = groundLayer.height;
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);

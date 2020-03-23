@@ -82,7 +82,10 @@ class LoadScene extends Phaser.Scene{
         this.load.audio('attackhit', 'assets/sounds/soundfx/Socapex - new_hits_4.wav', {
             instances: 1
           });
-          this.load.audio('diedhit', 'assets/sounds/soundfx/3grunt6.wav', {
+          this.load.audio('diedhit', 'assets/sounds/yelling sounds/3grunt6.wav', {
+            instances: 1
+          });
+          this.load.audio('diedenemy', 'assets/sounds/monster/deathe.wav', {
             instances: 1
           });
         //maps
@@ -418,6 +421,7 @@ class LoadScene extends Phaser.Scene{
         
         attackhit =this.sound.add('attackhit');
         diedhit = this.sound.add('diedhit');
+        enemydied = this.sound.add('diedenemy');
     }
     update(){
         

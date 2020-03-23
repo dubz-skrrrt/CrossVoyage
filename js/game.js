@@ -36,7 +36,7 @@ var logo, timer = 30;
 var delayedEvent;
 var change = false;
 var tween;
-var  hoverSprite, music, Sound, playbtnTxt, volume, scene, playSound, diedhit, attackhit;
+var  hoverSprite, music, Sound, playbtnTxt, volume, scene, playSound, diedhit, attackhit, enemydied;
 var playButton, musicButton, settingsButton, noButton, yesButton, numButton, backButton,  levelsButton, 
 charButton, bg, Glogo;
 var reaper, reaper2, reaper3, map, anims, Lives = 3, text_lives;
@@ -130,14 +130,18 @@ function spawnEnemies(amt, posX, posY){
 
   function WeaponCollide(enemy, wpn){
       if (strike && enemy.body.touching.right || strike && enemy.body.touching.left){  
+        
         attackhit.play();
         enemy.alive = false;
-        enemy.body.setVelocityX(0);
+        enemy.body.enable = false;
+        //enemy.body.setVelocityX(0);
             enemy.anims.play('dying'+enemyCharacter, true);
+            enemydied.play();
             enemy.once('animationcomplete', ()=>{
                 console.log("dead");
                 enemy.destroy();
             });
+       
         
       }
     
@@ -236,4 +240,28 @@ function checkPlayerMovement(){
                 reaper.anims.play('idle_blink'+character_number, true);
             }
     }
+}
+
+function OutofBounds(plr, waterlayer){
+    diedhit.play();
+        plr.body.enable = false;
+        plr.alive = false;
+            reaper.anims.play('dead'+character_number, true);
+            reaper.once('animationcomplete', ()=>{
+                Lives -= 1;
+                // plr.body.setVelocityX(0);
+                console.log("dead");
+                //plr.alpha = 0;
+                if (stage == 1){
+                    musicGrass.stop();
+                }else if (stage == 2){
+                    musicDesert.stop();
+                }else if (stage == 3){
+                    musicGrave.stop();
+                }else if (stage == 4){
+                    musicWinter.stop();
+                }
+                stage;
+                curScene.start('deathScene');
+            });
 }

@@ -4,7 +4,7 @@ class Level2 extends Phaser.Scene{
         
     }
     create(){
-        stage = 1;
+        stage = 2;
         worldPhys = this.physics;
 
         enemies = [];
@@ -12,8 +12,8 @@ class Level2 extends Phaser.Scene{
         console.log(character_number);
         map = this.make.tilemap({ key: "Map2" });
         
-        // var enemiesPosY = [500, 550, 600, 900, 1700];
-        // var enemiesPosX = [2300, 2500, 3700, 6000, 8800];
+        var enemiesPosY = [300, 1150, 1680, 300, 300, 1590, 1200];
+        var enemiesPosX = [2000, 3060, 3200, 4000, 5700, 6400, 8050];
 
         console.log(this.cache.tilemap.get('Map2').data);
         bg = this.add.image(this.game.renderer.width/2 ,this.game.renderer.height*.5, 'desertbg').setScale(1).setDepth(-2);
@@ -25,8 +25,9 @@ class Level2 extends Phaser.Scene{
         groundLayer.setCollisionByExclusion([-1]);
         var tileset2 = map.addTilesetImage("grass", "TileGrass");
         waterLayer = map.createDynamicLayer('Water', tileset2, 0, 0);
-        // invisbleLayer = map.createStaticLayer('invisbleColliders', tileset, 0, 0);
-        // invisbleLayer.setCollisionByExclusion([-1]);
+        waterLayer.setCollisionByExclusion([-1]);
+        invisbleLayer = map.createStaticLayer('invisbleColliders', tileset, 0, 0);
+        invisbleLayer.setCollisionByExclusion([-1]);
         var objectset = map.addTilesetImage("objects");
         clearLayer = map.createStaticLayer('Clear', objectset, 0, 0);
         clearLayer.setCollisionByExclusion([-1]);
@@ -70,7 +71,7 @@ class Level2 extends Phaser.Scene{
         this.cameras.main.startFollow(reaper);
         this.physics.world.createDebugGraphic();
 
-        //spawnEnemies(5, enemiesPosX, enemiesPosY);
+        spawnEnemies(7, enemiesPosX, enemiesPosY);
 
        // Create worldLayer collision graphic above the player, but below the help text
         // const graphics = this.add
@@ -91,9 +92,9 @@ class Level2 extends Phaser.Scene{
     update(){
         speed = 175;
         
-        // enemies.forEach(function arr(enemy, idx){
-        //     checkEnemies(enemy, idx);
-        // });
+        enemies.forEach(function arr(enemy, idx){
+            checkEnemies(enemy, idx);
+        });
 
         if (stopper == true){
             if (movingCrate.body.y >= 1100){
