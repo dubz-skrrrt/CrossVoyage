@@ -16,7 +16,7 @@ var config = {
         }
     },
     
-    scene: [LoadScene, MenuScene, SettingsScene, levelSelectScene, characterSelectScene, Level1, Level2, Level3, Level4, deathScene],
+    scene: [LoadScene, MenuScene, SettingsScene, levelSelectScene, characterSelectScene, Level1, Level2, Level3, Level4, ClearScene, deathScene],
     
     physics: {
         default: 'arcade',
@@ -38,16 +38,43 @@ var change = false;
 var tween;
 var  hoverSprite, music, Sound, playbtnTxt, volume, scene, playSound, diedhit, attackhit, enemydied;
 var playButton, musicButton, settingsButton, noButton, yesButton, numButton, backButton,  levelsButton, 
-charButton, bg, Glogo;
-var reaper, reaper2, reaper3, map, anims, Lives = 3, text_lives;
+charButton, bg, Glogo, credits;
+var reaper, reaper2, reaper3, Golem1, Golem2, Golem3, map, anims, Lives = 3, text_lives;
 var movingCrate, movingCrate2;
 var tileset, groundLayer, waterLayer, bgLayer, bgLayer2, clearLayer, invisbleLayer;
-var musicGrass, musicDesert, musicGrave, musicWinter, musicSpace;
+var musicGrass, musicDesert, musicGrave, musicWinter, musicSpace, musicCredits;
 var cursors, worldPhys, curScene;
 var speed, stopper=false, runner;
 var enemyHit, enemyLife = 20;
 var enemyCharacter;
 var stage;
+
+function MuteMusic(){
+    if (Sound == true){
+        console.log(Sound);
+        // if (stage == 1){
+        //     musicGrass.stop();
+        // }else if (stage == 2){
+        //     musicDesert.stop();
+        // }else if (stage == 3){
+        //     musicGrave.stop();
+        // }else if (stage == 4){
+        //     musicWinter.stop();
+        // }else{
+           music.stop()
+        Sound = false;
+        playSound = false; 
+        
+        
+    }else{
+        console.log(Sound);
+        music.play({
+            loop: true
+        });
+        Sound = true;
+        playSound = true;
+    }
+}
 function fadePicture(){
     console.log('works');
     change = true;
@@ -105,6 +132,7 @@ function spawnEnemies(amt, posX, posY){
         diedhit.play();
         plr.body.enable = false;
         plr.alive = false;
+        stage;
             reaper.anims.play('dead'+character_number, true);
             reaper.once('animationcomplete', ()=>{
                 Lives -= 1;
@@ -120,7 +148,7 @@ function spawnEnemies(amt, posX, posY){
                 }else if (stage == 4){
                     musicWinter.stop();
                 }
-                stage;
+                
                 curScene.start('deathScene');
             });
         //console.log('enemyhit');
@@ -149,13 +177,17 @@ function spawnEnemies(amt, posX, posY){
 
  function nextStage(){
     if (stage == 1){
+        musicGrass.stop();
         this.scene.start('desertLevel');
     } else if (stage == 2){
-        this.scene.start('graveyardtLevel');
+        musicDesert.stop();
+        this.scene.start('graveyardLevel');
     } else if (stage == 3){
+        musicGrave.stop();
         this.scene.start('winterLevel');
     } else if (stage == 4){
-        //this.scene.start('desertLevel');
+        musicWinter.stop();
+        this.scene.start('clearScene');
     }
     
   }
@@ -163,7 +195,7 @@ function spawnEnemies(amt, posX, posY){
 function checkPlayerMovement(){
     // Stop any previous movement from the last frame
     if (reaper.alive){
-        if (keyboard.F.isDown){
+        if (keyboard.SPACE.isDown){
             if (!weapon.flipX){
                 weapon.body.x = reaper.body.x+90;
             }else{

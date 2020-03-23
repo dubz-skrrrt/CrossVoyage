@@ -35,7 +35,7 @@ class Level1 extends Phaser.Scene{
         bgLayer.setCollisionByExclusion([-1]);
 
         if (character_number == 1){
-            reaper = this.physics.add.sprite(3000 , 500, 'reaper', '0_Reaper_Man_Idle Blinking_000').setDepth(3);
+            reaper = this.physics.add.sprite(200,this.game.renderer.height/2 + 1600, 'reaper', '0_Reaper_Man_Idle Blinking_000').setDepth(3);
             
         } else if(character_number == 2){
             reaper = this.physics.add.sprite(200,this.game.renderer.height/2 + 1600, 'reaper2', '0_Reaper_Man_Idle Blinking_000').setDepth(3);
@@ -87,7 +87,7 @@ class Level1 extends Phaser.Scene{
 
         bg.setScrollFactor(0);
         
-        keyboard = this.input.keyboard.addKeys("W, A, S, D, SHIFT, F");
+        keyboard = this.input.keyboard.addKeys("W, A, S, D, SHIFT, SPACE");
         anims = this.anims;
         reaper.anims.play('idle_blink'+character_number, true);
         stopper = false;

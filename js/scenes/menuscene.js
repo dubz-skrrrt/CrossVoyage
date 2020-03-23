@@ -20,7 +20,7 @@ class MenuScene extends Phaser.Scene{
         levelsButton = this.add.image(this.game.renderer.width/2 +150 ,this.game.renderer.height*.8, 'levelsButton').setDepth(1).setScale(0.5);
         musicButton = this.add.image(this.game.renderer.width/2 + 300 ,this.game.renderer.height*.8, 'musicButton').setDepth(1).setScale(0.5);
         settingsButton = this.add.image(this.game.renderer.width/2 - 300,this.game.renderer.height*.8, 'settingsButton').setDepth(1).setScale(0.5);
-        this.add.image(20, 20,'coin_bg').setOrigin(0).setDepth(0).setScale(0.7);
+        //this.add.image(20, 20,'coin_bg').setOrigin(0).setDepth(0).setScale(0.7);
         // playbtnTxt= this.add.text(playButton.x-65, playButton.y-35, 'PLAY ', {
         //     fontFamily: 'Font',
         //     fontStyle: 'Bold',
@@ -42,7 +42,7 @@ class MenuScene extends Phaser.Scene{
             ease: "Sine.easeInOut",
             repeat: -1,
             yoyo: true
-        })
+        });
         
 
         cursors = this.input.keyboard.createCursorKeys();

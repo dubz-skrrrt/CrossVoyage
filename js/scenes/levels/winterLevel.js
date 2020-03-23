@@ -12,8 +12,8 @@ class Level4 extends Phaser.Scene{
         console.log(character_number);
         map = this.make.tilemap({ key: "Map4" });
         
-        // var enemiesPosY = [500, 550, 600, 900, 1700];
-        // var enemiesPosX = [2300, 2500, 3700, 6000, 8800];
+        var enemiesPosY = [1490, 750, 490, 1600, 1200, , 240];
+        var enemiesPosX = [3550, 2800, 4470, 5870, 7500, 7500];
 
         console.log(this.cache.tilemap.get('Map4').data);
         bg = this.add.image(this.game.renderer.width/2 ,this.game.renderer.height*.5, 'winterbg').setScale(1).setDepth(-2);
@@ -23,19 +23,22 @@ class Level4 extends Phaser.Scene{
         var tileset = map.addTilesetImage("winterTiles", "TileWinter");
         groundLayer = map.createStaticLayer('World', tileset, 0, 0);
         groundLayer.setCollisionByExclusion([-1]);
-        // waterLayer = map.createDynamicLayer('Water', tileset, 0, 0);
-        // invisbleLayer = map.createStaticLayer('invisbleColliders', tileset, 0, 0);
-        // invisbleLayer.setCollisionByExclusion([-1]);
+        var tileset2 = map.addTilesetImage("grass", "TileGrass");
+        waterLayer = map.createDynamicLayer('Water', tileset2, 0, 0);
+        waterLayer.setCollisionByExclusion([-1]);
+        invisbleLayer = map.createStaticLayer('invisbleColliders', tileset, 0, 0);
+        invisbleLayer.setCollisionByExclusion([-1]);
         var objectset = map.addTilesetImage("objects");
-        // clearLayer = map.createStaticLayer('Clear', objectset, 0, 0);
-        // clearLayer.setCollisionByExclusion([-1]);
+        clearLayer = map.createStaticLayer('Clear', objectset, 0, 0);
+        clearLayer.setCollisionByExclusion([-1]);
         bgLayer2 = map.createStaticLayer('bg2', objectset, 0, 0);
         bgLayer2.setCollisionByExclusion([-1]);
         bgLayer = map.createStaticLayer('bg', objectset, 0, 0);
         bgLayer.setCollisionByExclusion([-1]);
         
+
         if (character_number == 1){
-            reaper = this.physics.add.sprite(200 , 1400, 'reaper', '0_Reaper_Man_Idle Blinking_000').setDepth(3);
+            reaper = this.physics.add.sprite(200,this.game.renderer.height/2 + 1600, 'reaper', '0_Reaper_Man_Idle Blinking_000').setDepth(3);
             
         } else if(character_number == 2){
             reaper = this.physics.add.sprite(200,this.game.renderer.height/2 + 1600, 'reaper2', '0_Reaper_Man_Idle Blinking_000').setDepth(3);
@@ -55,23 +58,18 @@ class Level4 extends Phaser.Scene{
         weapon.setSize(150, 350);
         weapon.setOffset(320, 50);
         weapon.body.immovable = true;
-        
-        // movingCrate = this.physics.add.image(9400, 1850, 'Crate').setDepth(1).setCollideWorldBounds(true).setScale(2.5, 1);
-        // movingCrate.setCollideWorldBounds(true);
-        // movingCrate.body.setAllowGravity(false);
-        // movingCrate.body.immovable = true;
-
+   
         this.physics.add.collider(groundLayer, reaper);
-        //this.physics.add.collider(reaper, movingCrate, movingBlock, null, this);
-        //this.physics.add.collider(reaper, clearLayer, nextStage, null, this);
-       
+        this.physics.add.collider(reaper, clearLayer, nextStage, null, this);
+        this.physics.add.collider(reaper, waterLayer, OutofBounds, null, this);
+
         this.physics.world.bounds.width = groundLayer.width;
         this.physics.world.bounds.height = groundLayer.height;
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(reaper);
         this.physics.world.createDebugGraphic();
 
-        //spawnEnemies(5, enemiesPosX, enemiesPosY);
+        spawnEnemies(6, enemiesPosX, enemiesPosY);
 
        // Create worldLayer collision graphic above the player, but below the help text
         // const graphics = this.add
@@ -85,16 +83,16 @@ class Level4 extends Phaser.Scene{
         // });
 
         bg.setScrollFactor(0);
-        keyboard = this.input.keyboard.addKeys("W, A, S, D, SHIFT, F");
+        keyboard = this.input.keyboard.addKeys("W, A, S, D, SHIFT, SPACE");
         reaper.anims.play('idle_blink'+character_number, true);
-        //stopper = false;
+        stopper = false;
     }
     update(){
         speed = 175;
         
-        // enemies.forEach(function arr(enemy, idx){
-        //     checkEnemies(enemy, idx);
-        // });
+        enemies.forEach(function arr(enemy, idx){
+            checkEnemies(enemy, idx);
+        });
 
         if (stopper == true){
             if (movingCrate.body.y >= 1100){
@@ -106,5 +104,6 @@ class Level4 extends Phaser.Scene{
             
         }
         checkPlayerMovement();
+        
     }
 }

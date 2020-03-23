@@ -20,16 +20,13 @@ class LoadScene extends Phaser.Scene{
         
     }
     preload(){
-        // this.load.scenePlugin({
-        //     key: 'animatedTiles',
-        //     url: 'assets/plugins/phaser-animated-tiles-master/src/plugin/main.js'
-        // });
+       
         curScene = this.scene;
         //UI
         this.load.image('level_bg', 'assets/images/windows/Windows_02.png');
         this.load.image('character_bg', 'assets/images/windows/Windows_08.png');
         this.load.image('settings_bg', 'assets/images/windows/Windows_12.png');
-        this.load.image('coin_bg', 'assets/images/windows/Windows_36.png');
+        //this.load.image('coin_bg', 'assets/images/windows/Windows_36.png');
         this.load.image('lives', 'assets/images/windows/Windows_31.png');
         //BGs
         this.load.image('bg', 'assets/images/grass/png/BG/BG.png');
@@ -38,6 +35,7 @@ class LoadScene extends Phaser.Scene{
         this.load.image('winterbg', 'assets/images/winter/png/BG/BG.png');
         this.load.image('bgBlur', 'assets/images/grass/png/BG/BG_blur.png');
         this.load.image('gameLogo', 'assets/images/UI/gameLogo.png');
+        this.load.image('credits', 'assets/images/UI/Credits.png');
         //tilesets
         this.load.image('TileGrass', 'assets/images/grass/grass.png');
         this.load.image('TileDesert', 'assets/images/desert/desertTiles.png');
@@ -61,7 +59,6 @@ class LoadScene extends Phaser.Scene{
         this.load.atlas('charButton', 'assets/images/UI/characterBtn.png', 'assets/images/JSON/characterBtn.json');
         this.load.atlas('arrowButton', 'assets/images/UI/arrows.png', 'assets/images/JSON/arrows.json');
         //sprites
-        // this.load.atlas('arrow', 'assets/sprites/arrow.png', 'assets/sprites/arrow.json');
         this.load.atlas('star', 'assets/sprites/star.png', 'assets/sprites/star.json');
         this.load.atlas('reaper', 'assets/sprites/reaper.png', 'assets/sprites/reaper.json');
         this.load.atlas('reaper2', 'assets/sprites/reaper2.png', 'assets/sprites/reaper2.json');
@@ -79,6 +76,7 @@ class LoadScene extends Phaser.Scene{
         this.load.audio('level3', 'assets/sounds/Dungeon Theme.mp3');
         this.load.audio('level4', 'assets/sounds/Iceland Theme.mp3');
         this.load.audio('level5', 'assets/sounds/Boss Theme.mp3');
+        this.load.audio('creditsTheme', 'assets/sounds/little town.ogg');
         this.load.audio('attackhit', 'assets/sounds/soundfx/Socapex - new_hits_4.wav', {
             instances: 1
           });
@@ -93,6 +91,8 @@ class LoadScene extends Phaser.Scene{
         this.load.tilemapTiledJSON('Map2', 'assets/maps/level2.json');
         this.load.tilemapTiledJSON('Map3', 'assets/maps/level3.json');
         this.load.tilemapTiledJSON('Map4', 'assets/maps/level4.json');
+
+        
         var progressBar = this.add.graphics();
         var progressBox = this.add.graphics({
             fillStyle:{
@@ -178,9 +178,9 @@ class LoadScene extends Phaser.Scene{
      
         tween = this.tweens.add({
             targets: logo,
-            duration: 1000,
+            duration: 1200,
             alpha: 0,
-            delay: 300,
+            delay: 500,
             ease: "Power2"
         });
         logo.alpha = 1;
@@ -385,6 +385,12 @@ class LoadScene extends Phaser.Scene{
                 repeat: -1
         });
         anims.create({
+            key: 'enemyIdle1',
+            frames: anims.generateFrameNames('Golem1', {prefix: '0_Golem_Idle Blinking_',start: 0, end: 17, zeroPad: 3}),
+                frameRate: 15,
+                repeat: -1
+        });
+        anims.create({
             key: 'dying2',
             frames: anims.generateFrameNames('Golem2', {prefix: '0_Golem_Dying_',start: 0, end: 14, zeroPad: 3}),
                 frameRate: 15,
@@ -399,6 +405,12 @@ class LoadScene extends Phaser.Scene{
         anims.create({
             key: 'enemyWalk2',
             frames: anims.generateFrameNames('Golem2', {prefix: '0_Golem_Walking_',start: 0, end: 23, zeroPad: 3}),
+                frameRate: 15,
+                repeat: -1
+        });
+        anims.create({
+            key: 'enemyIdle2',
+            frames: anims.generateFrameNames('Golem2', {prefix: '0_Golem_Idle Blinking_',start: 0, end: 17, zeroPad: 3}),
                 frameRate: 15,
                 repeat: -1
         });
@@ -418,16 +430,23 @@ class LoadScene extends Phaser.Scene{
                 frameRate: 15,
                 repeat: -1
         });
+        anims.create({
+            key: 'enemyIdle3',
+            frames: anims.generateFrameNames('Golem3', {prefix: '0_Golem_Idle Blinking_',start: 0, end: 17, zeroPad: 3}),
+                frameRate: 15,
+                repeat: -1
+        });
         
         attackhit =this.sound.add('attackhit');
         diedhit = this.sound.add('diedhit');
         enemydied = this.sound.add('diedenemy');
+        musicCredits = this.sound.add('creditsTheme');
     }
     update(){
         
         delayedEvent.getProgress();
         if (change){
-            curScene.start('menu');
+            curScene.start('menu', 'from loader');
             volume = 1;
             playSound = true;
             Sound = true;

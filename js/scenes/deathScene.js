@@ -59,6 +59,8 @@ class deathScene extends Phaser.Scene{
                 console.log(timer);
             }else{
                 this.scene.start('menu');
+                music.play({loop:true});
+                Lives = 3;
             }
             
         }

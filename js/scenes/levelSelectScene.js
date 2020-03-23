@@ -16,7 +16,7 @@ class levelSelectScene extends Phaser.Scene{
         numButton2 = this.add.image(this.game.renderer.width/2 + 100 ,this.game.renderer.height *.55 - 150, 'numberButton').setDepth(1).setScale(0.6, 0.55);
         numButton3 = this.add.image(this.game.renderer.width/2 - 100 ,this.game.renderer.height *.7 - 150, 'numberButton').setDepth(1).setScale(0.6, 0.55);
         numButton4 = this.add.image(this.game.renderer.width/2 +100 ,this.game.renderer.height *.7 - 150, 'numberButton').setDepth(1).setScale(0.6, 0.55);
-        numButton5 = this.add.image(this.game.renderer.width/2 ,this.game.renderer.height *.85 - 150, 'numberButton').setDepth(1).setScale(0.6, 0.55);
+        // numButton5 = this.add.image(this.game.renderer.width/2 ,this.game.renderer.height *.85 - 150, 'numberButton').setDepth(1).setScale(0.6, 0.55);
         
         this.add.text(this.game.renderer.width/2 - 50  ,this.game.renderer.height*.105, ' Level\nSelect', {
             fontFamily: 'Font',
@@ -53,12 +53,12 @@ class levelSelectScene extends Phaser.Scene{
             color: '#5e9d00',
         }).setDepth(2);
 
-        this.add.text(this.game.renderer.width/2 - 15,this.game.renderer.height *.6, '5', {
-            fontFamily: 'Font',
-            fontStyle: 'Bold',
-            fontSize: '50px',
-            color: '#5e9d00',
-        }).setDepth(2);
+        // this.add.text(this.game.renderer.width/2 - 15,this.game.renderer.height *.6, '5', {
+        //     fontFamily: 'Font',
+        //     fontStyle: 'Bold',
+        //     fontSize: '50px',
+        //     color: '#5e9d00',
+        // }).setDepth(2);
 
 
         backButton.setInteractive();
@@ -68,7 +68,7 @@ class levelSelectScene extends Phaser.Scene{
         numButton2.setInteractive();
         numButton3.setInteractive();
         numButton4.setInteractive();
-        numButton5.setInteractive();
+        // numButton5.setInteractive();
         
         backButton.on('pointerover', ()=>{
             backButton.setTexture('backButton', 'GUI_34');            
@@ -94,7 +94,8 @@ class levelSelectScene extends Phaser.Scene{
             numButton1.setTexture('numberButton', 'Button_11');           
         });
         numButton1.on('pointerup', ()=>{        
-            numButton1.setTexture('numberButton', 'Button_09');    
+            numButton1.setTexture('numberButton', 'Button_09');  
+            MuteMusic();  
             music.stop();
             character_number;
             this.scene.start('grassLevel'); 
@@ -109,7 +110,8 @@ class levelSelectScene extends Phaser.Scene{
             numButton2.setTexture('numberButton', 'Button_11');           
         });
         numButton2.on('pointerup', ()=>{        
-            numButton2.setTexture('numberButton', 'Button_09');     
+            numButton2.setTexture('numberButton', 'Button_09');  
+            MuteMusic();   
             music.stop();
             character_number;
             this.scene.start('desertLevel'); 
@@ -125,6 +127,7 @@ class levelSelectScene extends Phaser.Scene{
         });
         numButton3.on('pointerup', ()=>{        
             numButton3.setTexture('numberButton', 'Button_09');  
+            MuteMusic();  
             music.stop();
             character_number;
             this.scene.start('graveyardLevel');    
@@ -139,23 +142,24 @@ class levelSelectScene extends Phaser.Scene{
             numButton4.setTexture('numberButton', 'Button_11');           
         });
         numButton4.on('pointerup', ()=>{        
-            numButton4.setTexture('numberButton', 'Button_09');    
+            numButton4.setTexture('numberButton', 'Button_09');  
+            MuteMusic();    
             music.stop();
             character_number;
             this.scene.start('winterLevel');   
         });
-        numButton5.on('pointerover', ()=>{
-            numButton5.setTexture('numberButton', 'Button_10');            
-        });
-        numButton5.on('pointerout', ()=>{
-            numButton5.setTexture('numberButton', 'Button_09');           
-        });
-        numButton5.on('pointerdown', ()=>{
-            numButton5.setTexture('numberButton', 'Button_11');           
-        });
-        numButton5.on('pointerup', ()=>{        
-            numButton5.setTexture('numberButton', 'Button_09');     
-        });
+        // numButton5.on('pointerover', ()=>{
+        //     numButton5.setTexture('numberButton', 'Button_10');            
+        // });
+        // numButton5.on('pointerout', ()=>{
+        //     numButton5.setTexture('numberButton', 'Button_09');           
+        // });
+        // numButton5.on('pointerdown', ()=>{
+        //     numButton5.setTexture('numberButton', 'Button_11');           
+        // });
+        // numButton5.on('pointerup', ()=>{        
+        //     numButton5.setTexture('numberButton', 'Button_09');     
+        // });
 
         settingsButton.on('pointerover', ()=>{
             settingsButton.setTexture('settingsButton', 'GUI_82');
