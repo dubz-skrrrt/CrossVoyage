@@ -1,0 +1,28 @@
+{"frames": {
+
+"SlashFX_000":
+{
+	"frame": {"x":1,"y":1,"w":420,"h":474},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":11,"w":420,"h":474},
+	"sourceSize": {"w":496,"h":496}
+},
+"SlashFX_001":
+{
+	"frame": {"x":1,"y":477,"w":344,"h":104},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":28,"y":18,"w":344,"h":104},
+	"sourceSize": {"w":400,"h":128}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "ReaperStrike1.png",
+	"format": "RGBA8888",
+	"size": {"w":422,"h":582},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:58f36e48b2c8b4f7bf05a9f6ceee7012:ecd0cc8bf43141672bf4b5774e2101e2:13b22806222ad480f63b86536c761f6f$"
+}
+}

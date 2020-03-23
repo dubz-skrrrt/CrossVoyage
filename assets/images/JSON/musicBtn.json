@@ -1,0 +1,44 @@
+{"frames": {
+
+"GUI_49":
+{
+	"frame": {"x":1,"y":1,"w":176,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":178},
+	"sourceSize": {"w":176,"h":178}
+},
+"GUI_50":
+{
+	"frame": {"x":179,"y":1,"w":176,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":178},
+	"sourceSize": {"w":176,"h":178}
+},
+"GUI_51":
+{
+	"frame": {"x":357,"y":1,"w":176,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":178},
+	"sourceSize": {"w":176,"h":178}
+},
+"GUI_52":
+{
+	"frame": {"x":535,"y":1,"w":176,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":178},
+	"sourceSize": {"w":176,"h":178}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "musicBtn.png",
+	"format": "RGBA8888",
+	"size": {"w":712,"h":180},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:55d5120908e9aafa237e2f58b0b65f58:58c23d4f03c174eb40e0a243b04d2bd5:67df1a24372829664513deb752225c9c$"
+}
+}

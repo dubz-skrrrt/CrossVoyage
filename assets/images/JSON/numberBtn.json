@@ -1,0 +1,52 @@
+{"frames": {
+
+"Button_09":
+{
+	"frame": {"x":1,"y":1,"w":177,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":178},
+	"sourceSize": {"w":177,"h":178}
+},
+"Button_10":
+{
+	"frame": {"x":180,"y":1,"w":176,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":178},
+	"sourceSize": {"w":176,"h":178}
+},
+"Button_11":
+{
+	"frame": {"x":358,"y":1,"w":176,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":178},
+	"sourceSize": {"w":176,"h":178}
+},
+"Button_12":
+{
+	"frame": {"x":536,"y":1,"w":176,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":178},
+	"sourceSize": {"w":176,"h":178}
+},
+"Button_13":
+{
+	"frame": {"x":714,"y":1,"w":176,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":178},
+	"sourceSize": {"w":176,"h":178}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "numberBtn.png",
+	"format": "RGBA8888",
+	"size": {"w":891,"h":180},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c4c457f7abb116254c6105c55aa9af82:8c14b2cf2f963df3436be714aa8cdf8d:3fcb1e96294da607dde89a69364c9840$"
+}
+}

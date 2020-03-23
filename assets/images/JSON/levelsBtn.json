@@ -1,0 +1,44 @@
+{"frames": {
+
+"Button_66":
+{
+	"frame": {"x":1,"y":1,"w":176,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":179},
+	"sourceSize": {"w":176,"h":179}
+},
+"Button_67":
+{
+	"frame": {"x":179,"y":1,"w":177,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":179},
+	"sourceSize": {"w":177,"h":179}
+},
+"Button_68":
+{
+	"frame": {"x":358,"y":1,"w":177,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":179},
+	"sourceSize": {"w":177,"h":179}
+},
+"Button_69":
+{
+	"frame": {"x":537,"y":1,"w":176,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":179},
+	"sourceSize": {"w":176,"h":179}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "levelsBtn.png",
+	"format": "RGBA8888",
+	"size": {"w":714,"h":181},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a21da822e50737b6d5cb7ad4a822c15f:14b86446956c0cb3a70683f788d70c10:918b9727ef6af1893e6b539b30a36846$"
+}
+}
