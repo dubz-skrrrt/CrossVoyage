@@ -36,7 +36,7 @@ var logo, timer = 30;
 var delayedEvent;
 var change = false;
 var tween;
-var  hoverSprite, music, Sound, playbtnTxt, volume, scene, playSound;
+var  hoverSprite, music, Sound, playbtnTxt, volume, scene, playSound, diedhit, attackhit;
 var playButton, musicButton, settingsButton, noButton, yesButton, numButton, backButton,  levelsButton, 
 charButton, bg, Glogo;
 var reaper, reaper2, reaper3, map, anims, Lives = 3, text_lives;
@@ -102,6 +102,7 @@ function spawnEnemies(amt, posX, posY){
   }
   function collideWithPlayer(plr, enemy){
     if (plr.body.touching.right || plr.body.touching.left || plr.body.touching.down && enemy.body.touching.up){
+        diedhit.play();
         plr.body.enable = false;
         plr.alive = false;
             reaper.anims.play('dead'+character_number, true);
@@ -129,6 +130,7 @@ function spawnEnemies(amt, posX, posY){
 
   function WeaponCollide(enemy, wpn){
       if (strike && enemy.body.touching.right || strike && enemy.body.touching.left){  
+        attackhit.play();
         enemy.alive = false;
         enemy.body.setVelocityX(0);
             enemy.anims.play('dying'+enemyCharacter, true);

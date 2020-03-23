@@ -79,6 +79,12 @@ class LoadScene extends Phaser.Scene{
         this.load.audio('level3', 'assets/sounds/Dungeon Theme.mp3');
         this.load.audio('level4', 'assets/sounds/Iceland Theme.mp3');
         this.load.audio('level5', 'assets/sounds/Boss Theme.mp3');
+        this.load.audio('attackhit', 'assets/sounds/soundfx/Socapex - new_hits_4.wav', {
+            instances: 1
+          });
+          this.load.audio('diedhit', 'assets/sounds/soundfx/3grunt6.wav', {
+            instances: 1
+          });
         //maps
         this.load.tilemapTiledJSON('Map1', 'assets/maps/level1.json');
         this.load.tilemapTiledJSON('Map2', 'assets/maps/level2.json');
@@ -410,7 +416,8 @@ class LoadScene extends Phaser.Scene{
                 repeat: -1
         });
         
-        
+        attackhit =this.sound.add('attackhit');
+        diedhit = this.sound.add('diedhit');
     }
     update(){
         
